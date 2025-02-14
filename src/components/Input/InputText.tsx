@@ -1,9 +1,16 @@
 import { TextInput, StyleSheet } from "react-native";
 
-export default function InputText() {
+interface TextInputProps{
+  pass:string
+}
+
+export default function InputText(props: TextInputProps) {
   return (
     <>
-      <TextInput style={style.input} placeholder="PASS"></TextInput>
+      <TextInput 
+        style={style.input} 
+        placeholder="PASS"
+        value={props.pass}/>
     </>
   );
 }

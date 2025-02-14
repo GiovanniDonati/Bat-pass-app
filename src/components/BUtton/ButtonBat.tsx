@@ -1,19 +1,29 @@
-import { StyleSheet, Text, Pressable } from "react-native";
+import { StyleSheet, Text, Pressable, ToastAndroid } from "react-native";
+import * as Clipboard from 'expo-clipboard';
 
-export default function InputText() {
+interface ButtonBatProps {
+  onGenerate: () => void;
+}
+
+export default function ButtonBat({ onGenerate, pass }: ButtonBatProps) {
+  function handleCopyButton(){
+    Clipboard.setStringAsync(pass)
+  }
+
+  const seeToast = () => {
+    ToastAndroid.show('copiado com sucesso', ToastAndroid.SHORT)
+  }
+
   return (
     <>
       <Pressable
-        onPress={() => {
-          console.log("teu cu");
-        }}
+        onPress={onGenerate}
         style={style.button}
       >
         <Text style={style.text}>GENERATE</Text>
       </Pressable>
       <Pressable
-        onPress={() => {
-          console.log("teu cu");
+        onPress={() => {handleCopyButton(), seeToast()
         }}
         style={style.button}
       >
